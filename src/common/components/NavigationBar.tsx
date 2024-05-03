@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import {
   CloseIcon,
@@ -21,8 +22,10 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 import AppLogo from "./AppLogo";
-import { URLS } from "../utils/urls";
 import SearchBar from "./SearchBar";
+import { logout } from "@/modules/user/store/userSlice";
+import { RootState } from "@/store/store";
+import { URLS } from "../utils/urls";
 import { LinkProps, NAV_BAR_LINKS } from "../utils/navBar";
 
 const NavLink = ({ item }: { item: LinkProps }): ReactElement => (
@@ -42,19 +45,33 @@ const NavLink = ({ item }: { item: LinkProps }): ReactElement => (
 
 const NavigationBar = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { info } = useSelector(
+    (state: RootState) => state.user
+  );
+
+  const handleLogout =  () => {
+    dispatch(logout());
+    router.push(URLS.LOGIN);
+  };
 
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
+          {
+            info
+              ? null
+              : <IconButton
+                size={"md"}
+                icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+                aria-label={"Open Menu"}
+                display={{ md: "none" }}
+                onClick={isOpen ? onClose : onOpen}
+              />
+          }
           <HStack spacing={8} alignItems={"center"} onClick={() => router.push(URLS.HOMEPAGE)}>
             <Box>
               <AppLogo />
@@ -67,36 +84,39 @@ const NavigationBar = () => {
             <SearchBar />
           </Flex>
           <Flex alignItems={"center"}>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}>
-              {NAV_BAR_LINKS.map((link, index) => (
-                <NavLink key={`nav-${index}`} item={link}/>
-              ))}
-            </HStack>
-            {/* <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}>
-                <DragHandleIcon color={"#008080"}/>
-              </MenuButton>
-              <MenuList>
-                <MenuItem
-                  color={"#008080"}
-                  // onClick={userLogout}
-                >
-                  Logout
-                </MenuItem>
-              </MenuList>
-            </Menu> */}
+            {
+              info
+                ? <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  minW={0}>
+                  <DragHandleIcon color={"#008080"}/>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem
+                    color={"#008080"}
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+                : <HStack
+                  as={"nav"}
+                  spacing={4}
+                  display={{ base: "none", md: "flex" }}>
+                  {NAV_BAR_LINKS.map((link, index) => (
+                    <NavLink key={`nav-${index}`} item={link}/>
+                  ))}
+                </HStack>
+            }
           </Flex>
         </Flex>
 
-        {isOpen ? (
+        {isOpen && info !== undefined ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {NAV_BAR_LINKS.map((link, index) => (

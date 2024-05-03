@@ -5,7 +5,6 @@ import NavigationBar from "./NavigationBar";
 import Footer from "./Footer";
 
 const PageComponent = ({ children }: { children: ReactNode }): ReactElement => {
-
   return (
     <>
       <NavigationBar />
