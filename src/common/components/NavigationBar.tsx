@@ -54,7 +54,7 @@ const NavigationBar = () => {
 
   const handleLogout =  () => {
     dispatch(logout());
-    router.push(URLS.LOGIN);
+    router.push(URLS.HOMEPAGE);
   };
 
   return (
