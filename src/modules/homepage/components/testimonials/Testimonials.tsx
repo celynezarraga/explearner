@@ -23,7 +23,7 @@ const Testimonials: FC<TestimonialsProps> = ({ items }) => {
             return <TestimonialItem key={index} item={item}/>;
           })
         }
-    </SimpleGrid>
+      </SimpleGrid>
     </Box>
   );
 };
