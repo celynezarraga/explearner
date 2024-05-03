@@ -1,7 +1,8 @@
 export const URLS = {
   HOMEPAGE: "/",
   LOGIN: "/login",
-  SIGN_UP: "/sign-up"
+  SIGN_UP: "/sign-up",
+  COURSE: "/course"
 };
 
 // NOTE: Temporary mock apis
