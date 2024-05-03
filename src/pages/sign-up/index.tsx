@@ -1,12 +1,12 @@
+import React from "react";
 import PageComponent from "@/common/components/PageComponent";
-import { NextPage } from "next";
 
-const Homepage: NextPage = () => {
+const SignUpPage = () => {
   return (
     <PageComponent>
-      <> Index </>
+      <> SignUpPage </>
     </PageComponent>
   );
 };
 
-export default Homepage;
+export default SignUpPage;
