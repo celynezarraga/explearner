@@ -3,7 +3,7 @@
 First, install node dependencies
 
 ```bash
-npm instal;
+npm install
 ```
 
 Next, run the development server:
