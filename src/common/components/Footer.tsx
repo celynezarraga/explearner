@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import {
   Box,
@@ -10,6 +10,10 @@ import {
   useColorModeValue
 } from "@chakra-ui/react";
 import AppLogo from "./AppLogo";
+
+interface FooterProps {
+  withDrawer?: boolean;
+}
 
 const SocialButton = ({
   children,
@@ -45,11 +49,13 @@ const SocialButton = ({
   );
 };
 
-const Footer = () => {
+const Footer: FC<FooterProps> = ({ withDrawer }) => {
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}>
+      color={useColorModeValue("gray.700", "gray.200")}
+      w={withDrawer ? "calc(100% - 320px)" : "full"}
+    >
       <Container
         as={Stack}
         maxW={"6xl"}

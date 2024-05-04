@@ -1,23 +1,20 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 import { NextPage } from "next";
 import cookie from "cookie";
-import { AppDispatch, RootState } from "@/store/store";
-import PageComponent from "@/common/components/PageComponent";
-import { getVerifiedUser } from "@/common/utils/session";
-
-import PublicHomepage from "@/modules/homepage/PublicHomepage";
-import Homepage from "@/modules/homepage/Homepage";
-import { setUser } from "@/modules/user/store/userSlice";
+import Course from "@/modules/course/components/Course";
+import NavigationBar from "@/common/components/NavigationBar";
+import Footer from "@/common/components/Footer";
 import { UserApiResponse, UserDataResponse } from "@/modules/user/types/user";
-import { Spinner } from "@chakra-ui/react";
+import { getVerifiedUser } from "@/common/utils/session";
+import { setUser } from "@/modules/user/store/userSlice";
+import { AppDispatch, RootState } from "@/store/store";
+import { useDispatch, useSelector } from "react-redux";
 
-type HomeProps = {
+type CoursePageProps = {
   user: UserDataResponse;
 }
 
-const Home: NextPage<HomeProps> = ({ user }) => {
-
+const CoursePage: NextPage<CoursePageProps> = ({ user }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { info } = useSelector(
     (state: RootState) => state.user
@@ -30,9 +27,11 @@ const Home: NextPage<HomeProps> = ({ user }) => {
   }, [dispatch, info, user]);
 
   return (
-    <PageComponent>
-      { info ? <Homepage /> : <PublicHomepage /> }
-    </PageComponent>
+    <>
+      <NavigationBar withDrawer={true}/>
+      <Course />
+      <Footer withDrawer={true}/>
+    </>
   );
 };
 
@@ -53,4 +52,4 @@ export const getServerSideProps = (async (context) => {
   }
 });
 
-export default Home;
+export default CoursePage;

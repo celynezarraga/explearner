@@ -36,12 +36,12 @@ const CoursePreviewSelection: FC<CoursePreviewSelectionProps> = ({
         hideArrows={items.length < 4}
       >
         {
-          items.map((item, index) => {
-            return <CoursePreviewSelectionItem
+          items.map((item, index) =>
+            <CoursePreviewSelectionItem
               key={index}
               item={item}
-            />;
-          })
+            />
+          )
         }
       </SliderComponent>
     </>
