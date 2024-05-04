@@ -1,7 +1,10 @@
 import React, { FC } from "react";
+import { useRouter } from "next/router";
 import { Box, Heading, Stack, SimpleGrid, Text } from "@chakra-ui/react";
 import { CourseItem as CourseItemType } from "../../types/courseItem";
 import CourseItem from "./CourseItem";
+import { URLS } from "@/common/utils/urls";
+import CourseItemsView from "./CourseItemsView";
 
 interface MyCoursesProps {
   items: CourseItemType[];
@@ -11,43 +14,32 @@ interface MyCoursesProps {
 // "See all courses" will redirect to another page listing all enrolled courses.
 
 const MyCourses: FC<MyCoursesProps> = ({items}) => {
+  const router = useRouter();
 
-  const seeAllCoursesHandler = () => {
-    // TO DO: redirect to user courses page
+  const viewMyCourses = () => {
+    void router.push(URLS.VIEW_ALL_COURSES);
   };
 
   return (
     <>
       <Box py={3} mx={4}>
-        <Stack spacing='2'>
-          <Heading mt={2} size='lg'>
+        <Stack spacing="2">
+          <Heading mt={2} size="lg">
             Continue learning your explored courses ...
           </Heading>
-          {
-            items.length > 3 &&
-            <Text
-              mt={2}
-              size='lg'
-              textDecoration={"underline"}
-              cursor={"pointer"}
-              color={"teal"}
-              onClick={seeAllCoursesHandler}
-            >
-            See all courses.
-            </Text>
-          }
+          <Text
+            mt={2}
+            size="lg"
+            textDecoration={"underline"}
+            cursor={"pointer"}
+            color={"teal"}
+            onClick={viewMyCourses}
+          >
+          View my courses
+          </Text>
         </Stack>
       </Box>
-      <SimpleGrid p={3} mt={2} spacing={4} templateColumns='repeat(auto-fill, minmax(450px, 1fr))'>
-        {
-          items.map((item, index) => {
-            return <CourseItem
-              key={index}
-              item={item}
-            />;
-          })
-        }
-      </SimpleGrid>
+      <CourseItemsView items={items}/>
     </>
   );
 };

@@ -3,6 +3,7 @@ export const URLS = {
   LOGIN: "/login",
   SIGN_UP: "/sign-up",
   COURSE: "/course",
+  VIEW_ALL_COURSES: "/all-courses",
   NOT_FOUND: "/404"
 };
 

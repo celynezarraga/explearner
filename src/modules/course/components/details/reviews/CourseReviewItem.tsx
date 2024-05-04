@@ -16,7 +16,7 @@ const CourseReviewItem: FC<CourseReviewItemProps> = ({ review }) => {
           <Icon boxSize={"10"} as={FaRegUserCircle} color={"gray"}/>
         </Flex>
       <Stack>
-        <Heading size='md'>{author}</Heading>
+        <Heading size="md">{author}</Heading>
         { comment && <Text ml={2} size={"sm"} color={"gray"}>{comment}</Text> }
         <Stack direction={"row"}>
           <Rating rating={rating} />

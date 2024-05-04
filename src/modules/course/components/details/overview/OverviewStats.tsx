@@ -14,7 +14,7 @@ const OverviewStats: FC<OverviewStatsProps> = ({ stats }) => {
   return (
     <Box maxWidth={"lg"}>
       <TableContainer>
-        <Table variant='simple'>
+        <Table variant="simple">
           <Tbody>
             <Tr>
               <Td>Skill Level</Td>
