@@ -5,12 +5,10 @@ import cookie from "cookie";
 import { AppDispatch, RootState } from "@/store/store";
 import PageComponent from "@/common/components/PageComponent";
 import { getVerifiedUser } from "@/common/utils/session";
-
 import PublicHomepage from "@/modules/homepage/PublicHomepage";
 import Homepage from "@/modules/homepage/Homepage";
 import { setUser } from "@/modules/user/store/userSlice";
 import { UserApiResponse, UserDataResponse } from "@/modules/user/types/user";
-import { Spinner } from "@chakra-ui/react";
 
 type HomeProps = {
   user: UserDataResponse;

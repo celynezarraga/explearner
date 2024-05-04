@@ -1,7 +1,6 @@
 export type Course = {
   id: string;
   title: string;
-  author: string;
   modules: Module[];
   overview: Overview;
   review: CourseReview;
@@ -38,4 +37,14 @@ export type LearnerReview = {
   author: string;
   rating: number;
   comment?: string; 
+}
+
+export type CourseApiResponse = {
+  data?: Course;
+  message: string;
+  status: string;
+}
+
+export type GetCourseApiRequest = {
+  id: string;
 }

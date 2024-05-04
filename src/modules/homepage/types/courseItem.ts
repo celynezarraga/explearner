@@ -8,3 +8,9 @@ export type CourseItem = {
   timeLeft: number,
   url: string
 }
+
+export type MyCourseItemsApiResponse = {
+  data: CourseItem[],
+  message: string,
+  status: string,
+}

@@ -79,7 +79,7 @@ const NavigationBar: FC<NavigationBarProps> = ({withDrawer}) => {
           <HStack spacing={8} alignItems={"center"} onClick={() => router.push(URLS.HOMEPAGE)} cursor={"pointer"}>
             <Box>
               <AppLogo />
-              <Box ml={2} as={"span"}>
+              <Box ml={2} as={"span"} fontWeight={"bold"}>
                 Explearner
               </Box>
             </Box>
