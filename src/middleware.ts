@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { URLS } from "@/common/utils/urls";
 import { getVerifiedUser } from "./common/utils/session";
  
-const PROTECTED_ROUTES: string[] = [];
+const PROTECTED_ROUTES: string[] = [URLS.COURSE];
 const PUBLIC_ROUTES = [URLS.LOGIN, URLS.SIGN_UP];
  
 const middleware = async(req: NextRequest) => {
   const path = req.nextUrl.pathname;
-  const isProtectedRoute = PROTECTED_ROUTES.includes(path);
-  const isPublicRoute = PUBLIC_ROUTES.includes(path);
+  const isProtectedRoute = PROTECTED_ROUTES.some((route) => path.startsWith(route));
+  const isPublicRoute = PUBLIC_ROUTES.some((route) => path.startsWith(route));
 
   const token = req.cookies.get("token")?.value;
 

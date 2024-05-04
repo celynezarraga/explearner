@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import {
@@ -24,9 +24,13 @@ import {
 import AppLogo from "./AppLogo";
 import SearchBar from "./SearchBar";
 import { logout } from "@/modules/user/store/userSlice";
-import { RootState } from "@/store/store";
+import { AppDispatch, RootState } from "@/store/store";
 import { URLS } from "../utils/urls";
 import { LinkProps, NAV_BAR_LINKS } from "../utils/navBar";
+
+interface NavigationBarProps {
+  withDrawer?: boolean;
+}
 
 const NavLink = ({ item }: { item: LinkProps }): ReactElement => (
   <Link
@@ -43,9 +47,9 @@ const NavLink = ({ item }: { item: LinkProps }): ReactElement => (
   </Link>
 );
 
-const NavigationBar = () => {
+const NavigationBar: FC<NavigationBarProps> = ({withDrawer}) => {
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { info } = useSelector(
@@ -59,7 +63,7 @@ const NavigationBar = () => {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} w={withDrawer ? "calc(100% - 320px)" : "full"}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           {
             info
@@ -72,7 +76,7 @@ const NavigationBar = () => {
                 onClick={isOpen ? onClose : onOpen}
               />
           }
-          <HStack spacing={8} alignItems={"center"} onClick={() => router.push(URLS.HOMEPAGE)}>
+          <HStack spacing={8} alignItems={"center"} onClick={() => router.push(URLS.HOMEPAGE)} cursor={"pointer"}>
             <Box>
               <AppLogo />
               <Box ml={2} as={"span"}>
