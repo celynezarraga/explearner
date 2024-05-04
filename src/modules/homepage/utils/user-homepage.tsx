@@ -4,23 +4,23 @@ export const bannerImage: string = "assets/banner4.jpeg";
 
 export const myCourseItems: CourseItem[] = [
   {
-    title: "React JS Frontend Web Development",
+    title: "Typescript Tutorial for Angular/React Developers",
     currentModule: {
-      number: 1,
-      title: "Modern Javascript",
+      number: 0,
+      title: "Typescript Tutorial - TypeScript for React - Learn Typescript",
     },
     type: "Lecture",
-    timeLeft: 5,
-    url: "/course/1"
+    timeLeft: 51.5,
+    url: "/course/101"
   },
   {
-    title: "Angular JS Frontend Web Development",
+    title: "Git & GitHub",
     currentModule: {
       number: 1,
-      title: "Initial Setup and Configuration",
+      title: "Git & GitHub: Branching and the GitHub Workflow",
     },
     type: "Lecture",
-    timeLeft: 25,
-    url: "/course/2"
+    timeLeft: 2.2,
+    url: "/course/301"
   },
 ];

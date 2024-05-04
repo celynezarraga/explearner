@@ -1,18 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import VideoPlayer from "@/common/components/VideoPlayer";
 import CourseContents from "./contents/CourseContents";
 import CourseDetails from "./details/CourseDetails";
 import { Course as CourseType } from "../types/course";
-import { SAMPLE_COURSE } from "../utils/course";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store/store";
+import { toggleCompleted } from "../store/courseSlice";
 
-const Course = () => {
+interface CourseProps {
+  course: CourseType
+}
 
-  const [courseData, setCourseData] = useState<CourseType>(SAMPLE_COURSE);
+const Course: FC<CourseProps> = ({ course }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const [courseData, setCourseData] = useState<CourseType>(course);
   const [currentIndex, setCurrentIndex] = useState<number>();
   const [videoList, setVideoList] = useState<string[]>([]);
 
   useEffect(() => {
-    // TO DO: FETCH DATA
+    setCourseData(course);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -31,12 +38,19 @@ const Course = () => {
 
   const toggleComplete = (idx: number, isCompleted?: boolean) => {
     const currentValue = courseData.modules[idx].completed;
-    const moduleList = [...courseData.modules];
-    moduleList[idx].completed = isCompleted !== undefined ? isCompleted : !currentValue;
+    const newValue = isCompleted !== undefined ? isCompleted : !currentValue;
     setCourseData({
       ...courseData,
-      modules: moduleList
+      modules: courseData.modules.map((module, index) =>
+        index === idx 
+          ? { ...module, completed: newValue }
+          : module
+      )
     });
+    dispatch(toggleCompleted({
+      id: idx,
+      completed: newValue
+    }));
   };
 
   const onEnded = () => {

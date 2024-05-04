@@ -36,13 +36,13 @@ const CourseItem: FC<CourseItemProps> = ({ item }) => {
       onClick={clickHandler}
     >
       <Box ml={3} alignContent={"center"}>
-        <Icon h={"75px"} w={"75px"} color="teal" as={FaPlayCircle} />
+        <Icon h={"50px"} w={"50px"} color="teal" as={FaPlayCircle} />
       </Box>
 
       <Stack>
         <CardBody>
           <Text py='2'>{title}</Text>
-          <Heading size='md'>{`${currentModule.number}. ${currentModule.title}`}</Heading>
+          <Heading size='md'>{`${currentModule.number + 1}. ${currentModule.title}`}</Heading>
         </CardBody>
         <CardFooter>
           <Stack direction={"row"}>
