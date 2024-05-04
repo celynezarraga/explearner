@@ -76,7 +76,7 @@ const NavigationBar: FC<NavigationBarProps> = ({withDrawer}) => {
                 onClick={isOpen ? onClose : onOpen}
               />
           }
-          <HStack spacing={8} alignItems={"center"} onClick={() => router.push(URLS.HOMEPAGE)}>
+          <HStack spacing={8} alignItems={"center"} onClick={() => router.push(URLS.HOMEPAGE)} cursor={"pointer"}>
             <Box>
               <AppLogo />
               <Box ml={2} as={"span"}>
