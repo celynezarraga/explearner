@@ -28,8 +28,8 @@ const CourseItem: FC<CourseItemProps> = ({ item }) => {
   return (
     <Card
       direction={{ base: "column", sm: "row" }}
-      overflow='hidden'
-      variant='outline'
+      overflow="hidden"
+      variant="outline"
       mx={2}
       w={"450px"}
       cursor={"pointer"}
@@ -41,15 +41,15 @@ const CourseItem: FC<CourseItemProps> = ({ item }) => {
 
       <Stack>
         <CardBody>
-          <Text py='2'>{title}</Text>
-          <Heading size='md'>{`${currentModule.number + 1}. ${currentModule.title}`}</Heading>
+          <Text py="2">{title}</Text>
+          <Heading size="md">{`${currentModule.number + 1}. ${currentModule.title}`}</Heading>
         </CardBody>
         <CardFooter>
           <Stack direction={"row"}>
-            <Text color='blue.600' fontSize='md'>
+            <Text color="blue.600" fontSize="md">
               {type}
             </Text>
-            <Text color='gray.500' fontSize='md'>
+            <Text color="gray.500" fontSize="md">
               {`• ${timeLeft}m left`}
             </Text>
           </Stack>

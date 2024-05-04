@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { URLS } from "@/common/utils/urls";
 import { getVerifiedUser } from "./common/utils/session";
  
-const PROTECTED_ROUTES: string[] = [URLS.COURSE];
+const PROTECTED_ROUTES: string[] = [URLS.COURSE, URLS.VIEW_ALL_COURSES];
 const PUBLIC_ROUTES = [URLS.LOGIN, URLS.SIGN_UP];
  
 const middleware = async(req: NextRequest) => {

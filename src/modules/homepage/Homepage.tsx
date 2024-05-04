@@ -10,7 +10,6 @@ import { CourseItem } from "./types/courseItem";
 import { bannerImage } from "./utils/user-homepage";
 
 const Homepage = () => {
-
   const [courseItems, setCourseItems] = useState<CourseItem[]>();
 
   const { token } = useSelector(
@@ -42,7 +41,7 @@ const Homepage = () => {
         {
           courseItems
             ? <Box my={4}>
-              <MyCourses items={courseItems}/>
+              <MyCourses items={courseItems.slice(0, 3)}/>
             </Box>
           : <Loading height={"300px"}/>
         }

@@ -15,7 +15,7 @@ const OverviewAuthor: FC<OverviewAuthorProps> = ({ author }) => {
           <Icon boxSize={"10"} as={FaRegUserCircle} color={"teal"}/>
         </Flex>
       <Stack>
-        <Heading size='md' color={"teal"}>{name}</Heading>
+        <Heading size="md" color={"teal"}>{name}</Heading>
         { description?.length > 0 && <Text ml={2} size={"sm"} color={"gray"}>{description}</Text> }
       </Stack>
     </Flex>

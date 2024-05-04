@@ -29,8 +29,8 @@ const TestimonialItem: FC<TestimonialItemProp> = ({item}) => {
   return (
     <Card backgroundColor={"white"}>
       <CardBody>
-        <Stack mt='4' spacing='2'>
-          <Heading size='sm'>{`"${content}"`}</Heading>
+        <Stack mt="4" spacing="2">
+          <Heading size="sm">{`"${content}"`}</Heading>
           <Flex direction={"row"} align={"center"}>
             <Icon as={FaUserCircle} />
             <Text ml={2} size={"sm"}>{author}</Text>
@@ -43,7 +43,7 @@ const TestimonialItem: FC<TestimonialItemProp> = ({item}) => {
           <Icon size="md" color="teal" as={FaPlayCircle} />
           <Heading
             ml="2"
-            size='sm'
+            size="sm"
             color="teal"
             textDecoration={"underline"}
             cursor={"pointer"}

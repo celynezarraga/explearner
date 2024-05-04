@@ -22,11 +22,11 @@ const CoursePreviewSelection: FC<CoursePreviewSelectionProps> = ({
   return (
     <>
       <Box py={3} mx={4}>
-        <Stack spacing='2'>
-          <Heading mt={2} size='lg'>
+        <Stack spacing="2">
+          <Heading mt={2} size="lg">
             Explore courses and learn new things
           </Heading>
-          <Text mt={2} size='lg' fontStyle={"italic"}>
+          <Text mt={2} size="lg" fontStyle={"italic"}>
             Look into vast options of courses to explore and learn.
           </Text>
         </Stack>
